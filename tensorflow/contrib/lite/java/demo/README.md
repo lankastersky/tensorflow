@@ -53,3 +53,23 @@ code to merge.
   ```shell
   adb install bazel-bin/tensorflow/contrib/lite/java/demo/app/src/main/TfLiteCameraDemo.apk
   ```
+## Deeplab background segmentation model
+The model is converted to Tensorflow lite from the checkpoint mobilenetv2_coco_voc_trainaug](https://github.com/tensorflow/models/blob/master/research/deeplab/g3doc/model_zoo.md) using the next command where _toco_ was built from the latest github version:
+
+./toco \
+  --input_file=/tmp/tf/frozen_inference_graph.pb \
+  --output_file=/tmp/tf/frozen_inference_graph.tflite \
+  --input_format=TENSORFLOW_GRAPHDEF \
+  --output_format=TFLITE \
+  --input_shapes=1,513,513,3 \
+  --inference_type=FLOAT \
+  --inference_input_type=QUANTIZED_UINT8 \
+  --output_arrays=ResizeBilinear_3 \
+  --input_arrays=sub_7
+\#  --input_arrays=ImageTensor \
+\#  --output_arrays=SemanticPredictions  
+  
+  Converting the full model (with ImageTensor as input and SemanticPredictions as output) is currently not supported and gets the error:
+
+_Some of the operators in the model are not supported by the standard TensorFlow Lite runtime. If you have a custom implementation for them you can disable this error with --allow_custom_ops, or by setting allow_custom_ops=True when calling tf.contrib.lite.toco_convert(). Here is a list of operators for which you will need custom implementations: Pack_
+  
