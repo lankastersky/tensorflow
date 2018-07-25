@@ -54,7 +54,7 @@ code to merge.
   adb install bazel-bin/tensorflow/contrib/lite/java/demo/app/src/main/TfLiteCameraDemo.apk
   ```
 ## Deeplab background segmentation model
-The model is converted to Tensorflow lite from the checkpoint mobilenetv2_coco_voc_trainaug](https://github.com/tensorflow/models/blob/master/research/deeplab/g3doc/model_zoo.md) using the next command where _toco_ was built from the latest github version:
+The model is converted to Tensorflow lite from the checkpoint [mobilenetv2_coco_voc_trainaug](https://github.com/tensorflow/models/blob/master/research/deeplab/g3doc/model_zoo.md) using the next command where _toco_ was built from the latest github version:
 
 ./toco \
   --input_file=/tmp/tf/frozen_inference_graph.pb \
