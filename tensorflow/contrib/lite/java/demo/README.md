@@ -66,6 +66,7 @@ The model is converted to Tensorflow lite from the checkpoint [mobilenetv2_coco_
   --inference_input_type=QUANTIZED_UINT8 \
   --output_arrays=ResizeBilinear_3 \
   --input_arrays=sub_7
+  
 \#  --input_arrays=ImageTensor \
 \#  --output_arrays=SemanticPredictions  
   
